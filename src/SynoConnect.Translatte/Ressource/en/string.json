@@ -1,0 +1,89 @@
+{
+  "Text": {
+    "MainWindows": {
+      "Loading": "Loadding Settings ..."
+    },
+    "LoginView": {
+      "InfoServer": "Login information",
+      "UserName": "Username",
+      "Password": "Password",
+      "LoginButton": "Login",
+      "StayLog": "Save login information"
+    },
+    "DownloadStationView": {
+      "AllDl": "All download",
+      "DL": "Download",
+      "Finish": "Finish",
+      "Running": "Running",
+      "NotRunning": "Paused",
+      "Stopped": "Stoped",
+      "FileName": "File name",
+      "FileSize": "Size",
+      "Downloaded": "Downloaded",
+      "DownloadedSpeed": "Speed",
+      "Status": "Status"
+    },
+    "DetailDownload": {
+      "General": "General",
+      "FileName": "File name: ",
+      "Type": "Type : ",
+      "Destination": "Output : ",
+      "FileSize": "File size : ",
+      "UserName": "Username : ",
+      "CreateDate": "Create date : ",
+      "WaitingTime": "Finish Date : ",
+
+      "Transfert": "Transfert",
+      "Status": "Status : ",
+      "Uploaded": "Uploaded : ",
+      "Progress": "Progress : ",
+      "Speed": "Speed : ",
+      "Pair": "Peer : ",
+
+      "Tracker": "Tracker",
+      "Url": "Url",
+      "TrackerStatus": "Status",
+      "UpdateIn": "Update in",
+      "Seed": "Seed",
+      "PeerNumber": "Peers",
+
+      "PairHeader": "Peers",
+      "IPPeer": "IP Peer",
+      "Client": "Client",
+      "PairProgress": "Progress",
+      "PairDownloadSpeed": "Download speed",
+      "PairUploadSpeed": "Upload speed",
+
+      "FileHeader": "Files",
+      "UnitFileName": "File name",
+      "UnitFileSize": "File size",
+      "UnitFileDownloaded": "Downloaded",
+      "UnitFileProgress": "Progress",
+      "Priority": "Priority"
+    },
+    "SettingsWindows": {
+      "TMaxDL": "Speed simultaneous DL",
+      "TMaxUL": "Speed simultaneous UL",
+      "DefaultFolder": "Default output folder",
+      "DefaultFolderEmule": "Default output folder Emule",
+      "EmuleEnabled": "Enable Emule",
+      "EmuleMaxDL": "Speed Max simultaneous DL Emule",
+      "EmuleMaxUL": "Speed Max simultaneous UL Emule",
+      "FTPMaxDL": "Speed Max simultaneous DL FTP",
+      "HTTPMaxDL": "Speed Max simultaneous DL HTTP",
+      "NBZMaxDL": "Speed Max simultaneous DL NBZ",
+      "UnzipServiceEnabled": "Enable Unzip service",
+      "XunleiEnabled": "Enable Xunlei",
+      "Save": "Save"
+    },
+    "AddDownloadWindwows": {
+      "Uri": "Download url",
+      "File": "bt file",
+      "Username": "Username",
+      "Password": "Password",
+      "UnzipPassword": "UnzipPassword",
+      "Destination": "Destination",
+      "Save": "Save"
+    }
+  }
+}

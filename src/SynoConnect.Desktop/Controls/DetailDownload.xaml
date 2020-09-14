@@ -1,0 +1,152 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			        xmlns:local="clr-namespace:SynoConnect.Desktop.Converter;assembly=SynoConnect.Desktop"
+              x:Class="SynoConnect.Desktop.Controls.DetailDownload">
+
+  <UserControl.Resources>
+    <local:TypeDLVisibilityConv x:Key="myConverter"/>
+    <local:DLProgressionConverter x:Key="DLProgressionConverter"/>
+    <local:FileProgressConverter x:Key="FileProgressConverter"/>
+    <local:NumberToStringSIConverter x:Key="NumberToStringSIConverter"/>
+    <local:DateTimeConverter x:Key="DateTimeConverter"/>
+  </UserControl.Resources>
+
+  <TabControl>
+
+    <TabItem Name="General" VerticalContentAlignment="Center">
+      <StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="FileName" />
+          <TextBlock Text="{Binding Title}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Type" />
+          <TextBlock Text="{Binding Type }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Destination" />
+          <TextBlock Text="{Binding Additional.Detail.Destination }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name= "FileSize" />
+          <TextBlock Text="{Binding Size , Converter={StaticResource NumberToStringSIConverter}}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="UserName" />
+          <TextBlock Text="{Binding Username }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="CreateDate" />
+          <TextBlock Text="{Binding Additional.Detail.CreateTime , Converter={StaticResource DateTimeConverter} }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="WaitingTime" />
+          <TextBlock Text="{Binding Additional.Detail.Destination }" />
+        </StackPanel>
+      </StackPanel>
+    </TabItem>
+
+    <TabItem Name="Transfert" VerticalContentAlignment="Center">
+      <StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Status" />
+          <TextBlock Text="{Binding Status}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Uploaded" />
+          <TextBlock Text="{Binding Additional.Transfer.SizeDownloaded , Converter={StaticResource NumberToStringSIConverter} }" />
+          <TextBlock Text=" " />
+          <TextBlock Text="{Binding Additional.Transfer.SizeUploaded , Converter={StaticResource NumberToStringSIConverter} }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Progress" />
+          <TextBlock Text="{Binding , Converter={StaticResource DLProgressionConverter} }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Speed" />
+          <TextBlock Text="{Binding Additional.Transfer.SpeedDownload }" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Name="Pair" />
+          <TextBlock Text="{Binding Additional.Detail.TotalPeers }" />
+        </StackPanel>
+      </StackPanel>
+    </TabItem>
+
+    <TabItem IsVisible="{Binding Type , Converter={StaticResource myConverter} }" Name="Tracker" VerticalContentAlignment="Center">
+      <StackPanel Orientation="Horizontal">
+        <DataGrid Items="{Binding Additional.Tracker}" VerticalScrollBarVisibility="Auto" Name="TrackerList">
+          <DataGrid.Columns>
+            <DataGridTextColumn 
+											Binding="{Binding Url}"
+											Width="5*" />
+            <DataGridTextColumn  
+											Binding="{Binding Status}"
+											Width="*" />
+            <DataGridTextColumn  
+									Binding="{Binding UpdateTime}"
+									Width="*" />
+            <DataGridTextColumn 
+											Binding="{Binding Seeds}"
+											Width="*" />
+            <DataGridTextColumn 
+							Binding="{Binding Peers}"
+							Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </TabItem>
+
+    <TabItem IsVisible="{Binding Type , Converter={StaticResource myConverter} }" Name="PairHeader" VerticalContentAlignment="Center">
+      <StackPanel Orientation="Horizontal">
+        <DataGrid Items="{Binding Additional.Peer}" VerticalScrollBarVisibility="Auto" Name="PairList">
+          <DataGrid.Columns>
+            <DataGridTextColumn
+											Binding="{Binding Address}"
+											Width="5*" />
+            <DataGridTextColumn
+											Binding="{Binding Agent}"
+											Width="*" />
+            <DataGridTextColumn 
+									Binding="{Binding Progress}"
+									Width="*" />
+            <DataGridTextColumn
+											Binding="{Binding SpeedUpload}"
+											Width="*" />
+            <DataGridTextColumn
+							Binding="{Binding SpeedDownload}"
+							Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </TabItem>
+
+    <TabItem IsVisible="{Binding Type , Converter={StaticResource myConverter} }" Name="FileHeader" VerticalContentAlignment="Center">
+      <StackPanel Orientation="Horizontal">
+        <DataGrid Items="{Binding Additional.File}" MaxHeight="160" Name ="FileList">
+          <DataGrid.Columns>
+            <DataGridTextColumn 
+											Binding="{Binding Filename}"
+											Width="*" />
+            <DataGridTextColumn
+											Binding="{Binding Size , Converter={StaticResource NumberToStringSIConverter} }"
+											Width="*" />
+            <DataGridTextColumn 
+									Binding="{Binding SizeDownloaded , Converter={StaticResource NumberToStringSIConverter}}"
+									Width="*" />
+            <DataGridTextColumn 
+											Binding="{Binding SpeedUpload}"
+											Width="*" />
+            <DataGridTextColumn 
+							Binding="{Binding Type , Converter={StaticResource FileProgressConverter} }"
+							Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+      </StackPanel>
+    </TabItem>
+
+  </TabControl>
+</UserControl>

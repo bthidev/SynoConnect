@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:SynoConnect.Desktop.Controls;assembly=SynoConnect.Desktop"
+             x:Class="SynoConnect.Desktop.Views.LoginView">
+
+
+
+  <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="200">
+    <TextBlock Margin="10" HorizontalAlignment="Center" Name="InfoText" />
+    <TextBox Watermark="Url" Text="{Binding Url}"/>
+    <TextBox  Text="{Binding Username}" Name="UserName"/>
+    <TextBox PasswordChar="#" Text="{Binding PassWord}"  Name="Password" />
+    <CheckBox Margin="10" IsChecked="{Binding Stayloggin }">
+      <TextBlock  Name="StayLog"/>
+    </CheckBox>
+    <Button Margin="10" Command="{Binding LoginCommand }" IsVisible="{Binding !LoginProgresse }"  >
+      <TextBlock  Name="LoginButton"/>
+    </Button>
+    <controls:Spinner Height="20" Width="20"  Margin="0 0 8 0"  IsVisible="{Binding LoginProgresse }"/>
+  </StackPanel>
+
+</UserControl>

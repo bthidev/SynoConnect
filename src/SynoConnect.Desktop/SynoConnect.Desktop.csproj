@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+<!--   <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>link</TrimMode>
+    <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+    <PublishSingleFile>true</PublishSingleFile> -->
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <AvaloniaResource Include="**\*.xaml">
+      <SubType>Designer</SubType>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AvaloniaResource Remove="Views\SettingsWindows.xaml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Views\SettingsWindows.xaml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AvaloniaXaml Include="Views\SettingsWindows.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.0-preview5" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.10.0-preview5" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview5" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-preview5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="ReactiveUI" Version="11.5.35" />
+    <PackageReference Include="Serilog" Version="2.10.1-dev-01249" />
+    <PackageReference Include="Splat" Version="9.5.37" />
+    <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="9.5.37" />
+    <PackageReference Include="Splat.Microsoft.Extensions.Logging" Version="9.5.37" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Lib\Synology\Synology.csproj" />
+    <ProjectReference Include="..\SynoConnect.Back\SynoConnect.Back.csproj" />
+    <ProjectReference Include="..\SynoConnect.Translatte\SynoConnect.Translatte.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Views\SettingsWindows.xaml.cs">
+      <DependentUpon>SettingsWindows.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

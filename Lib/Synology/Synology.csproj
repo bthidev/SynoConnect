@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>0.6.0</PackageVersion>
+    <Authors>Caelan</Authors>
+    <Owners>Matteo Bruni</Owners>
+    <PackageProjectUrl>http://dotnetdevs.github.io/Synology</PackageProjectUrl>
+    <Summary>Synology API Wrapper for .NET</Summary>
+    <Title>Synology</Title>
+    <Description>Synology API Wrapper for .NET</Description>
+    <PackageId>Synology</PackageId>
+    <Company>Matteo Bruni</Company>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Synology.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Synology.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Classes\" />
+    <Folder Include="DownloadStation\Statistic\Parameters\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Parameters\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="FileStation\Rename\Results\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="RestSharp" Version="106.11.5-alpha.0.21" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+</Project>

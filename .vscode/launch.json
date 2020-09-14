@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/SynoConnect.Desktop/bin/Debug/net5.0/SynoConnect.Desktop.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "logging": {
+                "moduleLoad": false
+            },
+        },
+         {
+            "name": "Console Test",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/TestConsoleApp/bin/Debug/net5.0/TestConsoleApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "logging": {
+                "moduleLoad": false
+            },
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="SynoConnect.Desktop.Views.DownloadStationView"
+			       xmlns:local="clr-namespace:SynoConnect.Desktop.Converter;assembly=SynoConnect.Desktop"
+             xmlns:controls="clr-namespace:SynoConnect.Desktop.Controls;assembly=SynoConnect.Desktop"
+             xmlns:Util="clr-namespace:SynoConnect.Back.Models;assembly=SynoConnect.Back"
+             xmlns:views="clr-namespace:SynoConnect.Desktop.Controls">
+  <UserControl.Resources>
+    <local:NumberToStringSIConverter x:Key="NumberToStringSIConverter"/>
+  </UserControl.Resources>
+
+  <DockPanel>
+
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="35" HorizontalAlignment="Center">
+      <Button Name="AddDownload">
+        <DrawingPresenter Drawing="{DynamicResource Add}"  Height="20" />
+      </Button>
+      <Button Command="{Binding ChangeStateTaskCommand}" CommandParameter="{x:Static Util:TaskOption.Resume}">
+        <DrawingPresenter Drawing="{DynamicResource play}"  Height="20" />
+      </Button>
+      <Button Command="{Binding ChangeStateTaskCommand}" CommandParameter="{x:Static Util:TaskOption.Pause}">
+        <DrawingPresenter Drawing="{DynamicResource Pause}"  Height="20" />
+      </Button>
+      <Button Command="{Binding ChangeStateTaskCommand}" CommandParameter="{x:Static Util:TaskOption.Edit}">
+        <DrawingPresenter Drawing="{DynamicResource edit}"  Height="20" />
+      </Button>
+      <Button Command="{Binding ChangeStateTaskCommand}" CommandParameter="{x:Static Util:TaskOption.Delete}">
+        <DrawingPresenter Drawing="{DynamicResource Fdelete_filled}"  Height="20" />
+      </Button>
+    </StackPanel>
+
+    <Grid Name="Grid 1"  DockPanel.Dock="Left" MinWidth="150">
+
+        <Grid Name="Grid 1.1.1" HorizontalAlignment="Left">
+          <StackPanel >
+            <Button HorizontalContentAlignment="Left"  Command="{Binding FilterCommand}" CommandParameter="" >
+              <StackPanel  Orientation="Horizontal"  HorizontalAlignment="Left">
+                <DrawingPresenter Drawing="{DynamicResource BookList}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock    Name="AllDL"/>
+              </StackPanel>
+            </Button>
+            <Button HorizontalContentAlignment="Left" Command="{Binding FilterCommand}" CommandParameter="downloading" >
+              <StackPanel  Orientation="Horizontal">
+                <DrawingPresenter Drawing="{DynamicResource Arrow_Up_Down}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock   Name="DL"/>
+              </StackPanel>
+            </Button>
+            <Button HorizontalContentAlignment="Left" Command="{Binding FilterCommand}" CommandParameter="finished" >
+              <StackPanel  Orientation="Horizontal">
+                <DrawingPresenter Drawing="{DynamicResource Status_OK}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock    Name="Finish"/>
+              </StackPanel>
+            </Button>
+            <Button HorizontalContentAlignment="Left"  Command="{Binding FilterCommand}" CommandParameter="seeding"  >
+              <StackPanel  Orientation="Horizontal">
+                <DrawingPresenter Drawing="{DynamicResource Arrow_Up}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock    Name="Running"/>
+              </StackPanel>
+            </Button>
+            <Button HorizontalContentAlignment="Left" Command="{Binding FilterCommand}" CommandParameter="error" >
+              <StackPanel  Orientation="Horizontal">
+                <DrawingPresenter Drawing="{DynamicResource Rotaring_arrow_disable}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock   Name="NotRunning"/>
+              </StackPanel>
+            </Button>
+            <Button HorizontalContentAlignment="Left" Command="{Binding FilterCommand}" CommandParameter="paused" >
+              <StackPanel  Orientation="Horizontal">
+                <DrawingPresenter Drawing="{DynamicResource Pause}"  Height="20" />
+                <TextBlock  Text=" "/>
+                <TextBlock   Name="Stopped"/>
+              </StackPanel>
+            </Button>
+
+          </StackPanel>
+        </Grid>
+
+        <Grid Name="Grid 1.1.2"  VerticalAlignment="Bottom">
+          <Button  DockPanel.Dock="Bottom" Name="Settings">
+            <DrawingPresenter Drawing="{DynamicResource Spinner_Gear}"  Height="20" />
+          </Button>
+        </Grid>
+
+
+    </Grid>
+
+    <views:DetailDownload  DockPanel.Dock="Bottom"   DataContext="{Binding taskSelected }" />
+
+    <controls:Spinner Height="50" Width="50"  IsVisible="{Binding LoginProgresse }" Name="Loadder" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+    <DataGrid Items="{Binding taskListResult}" SelectedItem="{Binding taskSelected, Mode=TwoWay}" IsReadOnly="True" IsVisible="{Binding !LoginProgresse }" Name="ListDL">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Nome de fichier"
+                      Binding="{Binding Title}"
+                      Width="5*" />
+        <DataGridTextColumn Header="Taille de fichier"
+                      Binding="{Binding Size , Converter={StaticResource NumberToStringSIConverter} }"
+                      Width="*" />
+        <DataGridTextColumn Header="Chargé"
+              Binding="{Binding Additional.Transfer.SizeDownloaded , Converter={StaticResource NumberToStringSIConverter} }"
+              Width="*" />
+        <DataGridTextColumn Header="Vitesse"
+                      Binding="{Binding Additional.Transfer.SpeedDownload , Converter={StaticResource NumberToStringSIConverter}}"
+                      Width="*" />
+        <DataGridTextColumn Header="Statut"
+          Binding="{Binding Status}"
+          Width="*" />
+      </DataGrid.Columns>
+    </DataGrid>
+
+  </DockPanel>
+</UserControl>

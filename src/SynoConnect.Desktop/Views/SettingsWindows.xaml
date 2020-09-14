@@ -1,0 +1,71 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MinWidth="300" MaxWidth="300" Width="300" MinHeight="550" MaxHeight="550" Height="550"
+        xmlns:controls="clr-namespace:SynoConnect.Desktop.Controls;assembly=SynoConnect.Desktop"
+        x:Class="SynoConnect.Desktop.Views.SettingsWindows"
+        WindowStartupLocation="CenterOwner"
+        Title="Settings">
+
+  <StackPanel>
+    <controls:Spinner Height="50" Width="50"  IsVisible="{Binding LoaddingProgresse }" Name="Loadder" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+    <StackPanel IsVisible="{Binding !LoaddingProgresse }">
+
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="TMaxDL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.TorrentMaxDownload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="TMaxUL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.TorrentMaxUpload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="DefaultFolder"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.DefaultDestination}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="DefaultFolderEmule"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.EmuleDefaultDestination}"/>
+      </StackPanel>
+
+      <CheckBox Margin="10" IsChecked="{Binding ConfigResult.EmuleEnabled }">
+        <TextBlock Name="EmuleEnabled"/>
+      </CheckBox>
+
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="EmuleMaxDL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.EmuleMaxDownload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="EmuleMaxUL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.EmuleMaxUpload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock Name="FTPMaxDL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.FtpMaxDownload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock  Name="HTTPMaxDL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.HttpMaxDownload}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <TextBlock  Name="NBZMaxDL"/>
+        <TextBox Watermark="Url" Text="{Binding ConfigResult.NzbMaxDownload}"/>
+      </StackPanel>
+
+      <CheckBox Margin="10" IsChecked="{Binding ConfigResult.UnzipServiceEnabled }">
+        <TextBlock Name="UnzipServiceEnabled"/>
+      </CheckBox>
+      <CheckBox Margin="10" IsChecked="{Binding ConfigResult.XunleiEnabled }">
+        <TextBlock  Name="XunleiEnabled"/>
+      </CheckBox>
+
+      <Button Margin="10" Name="SaveButton"  >
+        <TextBlock  Name="Save"/>
+      </Button>
+
+    </StackPanel>
+  </StackPanel>
+</Window>

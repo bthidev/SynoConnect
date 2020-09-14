@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Ressource\en\string.json" />
+    <None Remove="Ressource\fr\string.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ressource\en\string.json" />
+    <EmbeddedResource Include="Ressource\fr\string.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

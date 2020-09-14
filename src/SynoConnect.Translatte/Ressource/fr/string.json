@@ -1,0 +1,89 @@
+{
+  "Text": {
+    "DetailDownload": {
+      "General": "general",
+      "FileName": "Nom de Fichier: ",
+      "Type": "Type : ",
+      "Destination": "Déstination : ",
+      "FileSize": "Taille de fichier : ",
+      "UserName": "Nom d'utilisateur : ",
+      "CreateDate": "Heure de creation : ",
+      "WaitingTime": "Temps d'attente : ",
+
+      "Transfert": "Transfert",
+      "Status": "Status : ",
+      "Uploaded": "Transferer : ",
+      "Progress": "Progréssion : ",
+      "Speed": "Vitesse : ",
+      "Pair": "Pair : ",
+
+      "Tracker": "Tracker",
+      "Url": "Url",
+      "TrackerStatus": "Statut",
+      "UpdateIn": "Mettre a jour dans",
+      "Seed": "Graines",
+      "PeerNumber": "Pairs",
+
+      "PairHeader": "Pairs",
+      "IPPeer": "IP Peer",
+      "Client": "Client",
+      "PairProgress": "Progréssions",
+      "PairUploadSpeed": "Vitesse de chargement",
+      "PairDownloadSpeed": "Vitesse de téléchargement",
+
+      "FileHeader": "Fichiers",
+      "UnitFileName": "Nom de fichier",
+      "UnitFileSize": "Taille de fichier",
+      "UnitFileDownloaded": "Telecharger",
+      "UnitFileProgress": "Progréssion",
+      "Priority": "Prioriter"
+    },
+    "DownloadStationView": {
+      "AllDl": "Tous les téléchargement",
+      "DL": "Téléchargement",
+      "Finish": "Terminer",
+      "Running": "Actif",
+      "NotRunning": "Inactif",
+      "Stopped": "Arrete",
+      "FileName": "Nom de fichier",
+      "FileSize": "Taille de fichier",
+      "Downloaded": "Charge",
+      "DownloadedSpeed": "Vitesse",
+      "Status": "Statut"
+    },
+    "LoginView": {
+      "InfoServer": "Informatation de connection",
+      "UserName": "Nom d'utilisateur",
+      "Password": "Mode passe",
+      "LoginButton": "Connection",
+      "StayLog": "Sauvegarder les paramèttres de connection"
+    },
+    "MainWindows": {
+      "Loading": "Chargement des Paramettres ..."
+    },
+    "SettingsWindows": {
+      "TMaxDL": "Vitesse de Torrent max download",
+      "TMaxUL": "Vitesse de Torrent max upload",
+      "DefaultFolder": "Dossier de destination par défaut",
+      "DefaultFolderEmule": "Dossier Emule par défaut",
+      "EmuleEnabled": "Activé Emule",
+      "EmuleMaxDL": "Vitesse de telechargement max Emule",
+      "EmuleMaxUL": "Vitesse d'envoie max Emule",
+      "FTPMaxDL": "Vitesse de telechargement max FTP",
+      "HTTPMaxDL": "Vitesse de telechargement max HTTP",
+      "NBZMaxDL": "Vitesse de telechargement max NBZ",
+      "UnzipServiceEnabled": "Activé l'auto unzip",
+      "XunleiEnabled": "Activé Xunlei",
+      "Save": "Enregistré"
+    },
+    "AddDownloadWindwows": {
+      "Uri": "Url de telechargement",
+      "File": "Fichier bt",
+      "Username": "Mom d'utilisateur",
+      "Password": "Mot de Passe",
+      "UnzipPassword": "Mot de passe de l'archive",
+      "Destination": "Destination",
+      "Save": "Enregistré"
+    }
+  }
+}
