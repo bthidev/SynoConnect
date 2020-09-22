@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Synology.DownloadStation.Task.Parameters
 {
+    /// <summary>
+    /// Task create post parameters.
+    /// </summary>
     public class TaskCreateParametersPost : PostParameters
     {
         /// <summary>
