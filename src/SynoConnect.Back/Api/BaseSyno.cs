@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SynoConnect.Back.Models;
 using Synology;
+using Synology.Api.Auth.Results;
 using Synology.Classes;
 using Synology.DownloadStation.Info.Results;
+using Synology.DownloadStation.Statistic.Results;
 using Synology.DownloadStation.Task.Parameters;
 using Synology.DownloadStation.Task.Results;
 using Synology.Interfaces;
@@ -42,12 +44,14 @@ namespace SynoConnect.Back.Api
             ResultData<IEnumerable<ITaskMinimalResult>> result = await syno.DownloadStation().Task().ResumeAsync(new[] { ID });
             return result.Success;
         }
-        public async void GetCurrentSpeed(){
+        public async Task<IStatisticResult> GetCurrentSpeed(){
             ISynologyConnection syno = _scope.ServiceProvider.GetService<ISynologyConnection>();
             var result = await syno.DownloadStation().Statistic().InfoAsync();
-            if ( result.Success){
-                Console.WriteLine($"speeddownload : {result.Data.SpeedDownload} uploadspeed : { result.Data.SpeedUpload }");
+            if (result.Success)
+            {
+                return result.Data;
             }
+            else return null;
         }
         public async Task<bool> AddTask(NewDownloadModels newDownloadModels)
         {
@@ -154,7 +158,7 @@ namespace SynoConnect.Back.Api
                     settingsSave.SessionName = "SynoConnect";
 
                     ISynologyConnection syno = _scope.ServiceProvider.GetService<ISynologyConnection>();
-                    ResultData<Synology.Api.Auth.Results.IAuthResult> resLogin = await syno.Api().Auth().LoginAsync();
+                    ResultData<IAuthResult> resLogin = await syno.Api().Auth().LoginAsync();
                     if (resLogin.Error == null || (resLogin.Error != null && resLogin.Error.Code == 403))
                     {
                         return true;

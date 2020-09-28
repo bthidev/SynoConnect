@@ -4,6 +4,7 @@ using ReactiveUI;
 using Splat;
 using SynoConnect.Back.Api;
 using SynoConnect.Back.Models;
+using Synology.DownloadStation.Statistic.Results;
 using Synology.DownloadStation.Task.Results;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace SynoConnect.Back.ViewModels
     public class DownloadStationViewModel : ViewModelBase, IRoutableViewModel
     {
         readonly IServiceProvider serviceProvider;
+        private IStatisticResult statisticResult;
         private bool _loginProgresse;
         private List<ITaskResult> internalList;
         private ITaskResult _taskSelected;
@@ -44,7 +46,16 @@ namespace SynoConnect.Back.ViewModels
                 this.RaiseAndSetIfChanged(ref _taskSelected, value);
             }
         }
-        public DownloadStationViewModel(IScreen screen)
+
+        public IStatisticResult StatisticResult
+        {
+            get => statisticResult;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref statisticResult, value);
+            }
+        }
+    public DownloadStationViewModel(IScreen screen)
         {
             serviceProvider = Locator.Current.GetService<IServiceProvider>();
             HostScreen = screen;
@@ -62,7 +73,7 @@ namespace SynoConnect.Back.ViewModels
             }
             var previousSelected = _taskSelected;
             internalList = (await serviceProvider.GetService<BaseSyno>().GetTask()).Tasks.ToList();
-            serviceProvider.GetService<BaseSyno>().GetCurrentSpeed();
+            StatisticResult = await serviceProvider.GetService<BaseSyno>().GetCurrentSpeed();
             taskListResult.Clear();
             taskListResult.AddRange(internalList.Where(w => w.Status.Contains(filter)));
             if (previousSelected != null)
