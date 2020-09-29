@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using SynoConnect.Back.Models;
 using Synology;
 using Synology.Api.Auth.Results;
@@ -7,10 +8,14 @@ using Synology.DownloadStation.Info.Results;
 using Synology.DownloadStation.Statistic.Results;
 using Synology.DownloadStation.Task.Parameters;
 using Synology.DownloadStation.Task.Results;
+using Synology.FileStation.List.Parameters;
+using Synology.FileStation.List.Results;
+using Synology.FileStation.VirtualFolder.Parameters;
 using Synology.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -174,5 +179,28 @@ namespace SynoConnect.Back.Api
             return false;
         }
 
+        public async Task<List<string>> GetFolderList()
+        {
+            ISynologyConnection syno = _scope.ServiceProvider.GetService<ISynologyConnection>();
+            var listVirtualFolder = await syno.FileStation().List().ListSharesAsync(new ListSharesParameters { });
+            var directory = new List<string>();
+            foreach (var data in listVirtualFolder.Data.Shares)
+            {
+                directory.Add(data.Name);
+            }
+            return directory;
+        }
+
+        public async Task<IEnumerable<string>> GetFolderList(string baseFolder)
+        {
+            ISynologyConnection syno = _scope.ServiceProvider.GetService<ISynologyConnection>();
+            var result = await syno.FileStation().List().ListFilesAsync(new ListParameters { FolderPath = baseFolder , Filetype = FileType.Directory});
+            var directory = new List<string>();
+            IFileListResult temp = result.Data;
+            var json = JsonConvert.SerializeObject(temp);
+
+            var test = JsonConvert.DeserializeObject<HackJsonIFileresult>(json).files.Select(x => x.name);
+            return test;
+        }
     }
 }

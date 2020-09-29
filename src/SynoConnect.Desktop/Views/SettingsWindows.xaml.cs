@@ -36,7 +36,17 @@ namespace SynoConnect.Desktop.Views
             this.FindControl<TextBlock>("XunleiEnabled").Text = Translattor.GetTranslatte("SettingsWindows/XunleiEnabled");
             this.FindControl<TextBlock>("Save").Text = Translattor.GetTranslatte("SettingsWindows/Save");
             this.FindControl<Button>("SaveButton").Click += SaveDownload;
+            this.FindControl<Button>("ExploreButton").Click += SettingsWindows_Click;
         }
+
+        private async void SettingsWindows_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Window window = new Window();
+            var test = new FolderExplorer();
+            var result = await test.ShowDialog<string>(window);
+            this.FindControl<TextBox>("ExploreText").Text = result;
+        }
+
         private void SaveDownload(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             ViewModel.SaveCommand.Execute();
