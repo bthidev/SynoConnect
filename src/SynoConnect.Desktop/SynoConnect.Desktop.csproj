@@ -21,10 +21,12 @@
   </ItemGroup>
   
   <ItemGroup>
+    <AvaloniaResource Remove="Views\FolderExplorer.xaml" />
     <AvaloniaResource Remove="Views\SettingsWindows.xaml" />
   </ItemGroup>
   
   <ItemGroup>
+    <None Remove="Views\FolderExplorer.xaml" />
     <None Remove="Views\SettingsWindows.xaml" />
   </ItemGroup>
   
@@ -32,6 +34,12 @@
     <AvaloniaXaml Include="Views\SettingsWindows.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FolderExplorer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   
   <ItemGroup>
@@ -46,6 +54,7 @@
     <PackageReference Include="Splat" Version="9.5.37" />
     <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="9.5.37" />
     <PackageReference Include="Splat.Microsoft.Extensions.Logging" Version="9.5.37" />
+    <PackageReference Include="System.Reactive" Version="4.4.1" />
   </ItemGroup>
   
   <ItemGroup>

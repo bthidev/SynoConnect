@@ -1,0 +1,30 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MinWidth="300" MaxWidth="300" Width="300" MinHeight="550" MaxHeight="550" Height="550"
+        xmlns:controls="clr-namespace:SynoConnect.Desktop.Controls;assembly=SynoConnect.Desktop"
+        x:Class="SynoConnect.Desktop.Views.FolderExplorer"
+        WindowStartupLocation="CenterOwner"
+        Title="Settings">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+        <StackPanel>
+            <controls:Spinner Height="50" Width="50"  IsVisible="{Binding LoaddingProgresse }" Name="Loadder" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Button Margin="10" Name="SaveButton"  >
+                <TextBlock  Name="Save"/>
+            </Button>
+            <StackPanel IsVisible="{Binding !LoaddingProgresse }">
+                    <TreeView Name="Treeview" Items="{Binding Items}" SelectedItems="{Binding SelectedItems , Mode=TwoWay}"  >
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate ItemsSource="{Binding Children}">
+                                <TextBlock Text="{Binding Header}"/>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+            </StackPanel>
+            
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

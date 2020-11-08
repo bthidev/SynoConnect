@@ -32,6 +32,14 @@ namespace SynoConnect.Desktop.Views
             this.FindControl<TextBlock>("Save").Text = Translattor.GetTranslatte("AddDownloadWindwows/Save");
             this.FindControl<Button>("ChooseFile").Click += AddDownloadPWindwows_Click;
             this.FindControl<Button>("SaveButton").Click += SaveDownload;
+            this.FindControl<Button>("ExploreButton").Click += SettingsWindows_Click;
+        }
+        private async void SettingsWindows_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Window window = new Window();
+            var test = new FolderExplorer();
+            var result = await test.ShowDialog<string>(window);
+            this.FindControl<TextBox>("ExploreText").Text = result;
         }
         private void SaveDownload(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
