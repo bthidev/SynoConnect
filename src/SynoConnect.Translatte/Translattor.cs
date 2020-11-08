@@ -40,6 +40,10 @@ namespace SynoConnect.Translatte
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             string resourceName = "SynoConnect.Translatte.Ressource." + lng + ".string.json";
+            if ( assembly.GetManifestResourceStream(resourceName) == null )
+            {
+                resourceName = "SynoConnect.Translatte.Ressource.fr.string.json";
+            }
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             using (StreamReader reader = new StreamReader(stream))
             {
