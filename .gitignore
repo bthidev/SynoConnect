@@ -337,3 +337,6 @@ ASALocalRun/
 .mfractor/
 .DS_Store
 Config.json
+SynnoConnect.app/Contents/Info.plist
+SynnoConnect.app/Contents/PkgInfo
+SynnoConnect.app/Contents/MacOS/RunIT
